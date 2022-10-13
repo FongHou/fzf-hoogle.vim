@@ -11,7 +11,6 @@ else
   let s:window = get(g:, 'hoogle_fzf_window', {'down': '50%'})
 endif
 
-let s:database = get(g:, 'hoogle_database', '~/.hoogle/default.hoo')
 let s:count = get(g:, 'hoogle_count', 500)
 let s:open_browser = get(g:, 'hoogle_fzf_open_browser', 'alt-s')
 let s:copy_type = get(g:, 'hoogle_fzf_copy_type', 'alt-x')
@@ -56,6 +55,8 @@ function! hoogle#run(query, fullscreen) abort
   call fzf#run(fzf#wrap('hoogle', options, a:fullscreen))
 endfunction
 
+
+let s:database = get(g:, 'hoogle_database', './.haskell.hoo')
 
 function! s:Source(query) abort
   let hoogle = printf('%s --json -d %s --count=%s %s 2> /dev/null | ', g:hoogle_path, s:database, s:count, shellescape(a:query))
