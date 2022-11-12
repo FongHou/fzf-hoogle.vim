@@ -56,7 +56,7 @@ function! hoogle#run(query, fullscreen) abort
 endfunction
 
 
-let s:database = get(g:, 'hoogle_database', './.hackage.hoo')
+let s:database = get(g:, 'hoogle_database', './.haskell.hoo')
 
 function! s:Source(query) abort
   let hoogle = printf('%s --json -d %s --count=%s %s 2> /dev/null | ', g:hoogle_path, s:database, s:count, shellescape(a:query))
